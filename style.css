@@ -1,0 +1,27 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e67e22;
+}
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header {
+    background: linear-gradient(135deg, var(--primary-color), #34495e);
+    color: white;
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.card-service {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid var(--accent-color);
+}
+.card-service:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+.badge-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

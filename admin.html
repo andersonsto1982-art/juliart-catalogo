@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juliart Admin - Gestão de Serviços</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="text-center mb-4">
+        <div class="container">
+            <h1><i class="fa-solid fa-user-gear me-2"></i> Juliart Admin</h1>
+            <p class="lead mb-0">Painel de Gerenciamento de Serviços e Preços</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <!-- Controls & Actions -->
+        <div class="row g-3 mb-4 align-items-center">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text bg-white"><i class="fa-solid fa-search text-muted"></i></span>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Buscar serviço...">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select id="categoryFilter" class="form-select">
+                    <option value="">Todas as Categorias</option>
+                    <option value="Impressões & Cópias">Impressões & Cópias</option>
+                    <option value="Fotografia & Restauração">Fotografia & Restauração</option>
+                    <option value="Brindes & Personalizados">Brindes & Personalizados</option>
+                    <option value="Design & Web">Design & Web</option>
+                </select>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <a href="index.html" class="btn btn-outline-secondary me-2">
+                    <i class="fa-solid fa-eye me-1"></i> Ver Catálogo
+                </a>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#serviceModal" onclick="openAddModal()">
+                    <i class="fa-solid fa-plus me-1"></i> Novo Serviço
+                </button>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="row" id="servicesGrid">
+            <!-- Dynamic Content loaded via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal fade" id="serviceModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Adicionar Novo Serviço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="serviceForm">
+                        <input type="hidden" id="serviceId">
+                        <div class="mb-3">
+                            <label for="serviceName" class="form-label">Nome do Serviço</label>
+                            <input type="text" class="form-control" id="serviceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceCategory" class="form-label">Categoria</label>
+                            <select class="form-select" id="serviceCategory" required>
+                                <option value="Impressões & Cópias">Impressões & Cópias</option>
+                                <option value="Fotografia & Restauração">Fotografia & Restauração</option>
+                                <option value="Brindes & Personalizados">Brindes & Personalizados</option>
+                                <option value="Design & Web">Design & Web</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="servicePrice" class="form-label">Preço / Condição (ex: R$ 5,00 ou A partir de R$ 30)</label>
+                            <input type="text" class="form-control" id="servicePrice" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceDesc" class="form-label">Descrição / Detalhes (Opcional)</label>
+                            <textarea class="form-control" id="serviceDesc" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveService()">Salvar Serviço</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
